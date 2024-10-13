@@ -1,0 +1,12 @@
+<script setup>
+import KntH1 from '../components/heading/KntH1.vue'
+import KntBreadcrumb from '@/components/heading/KntBreadcrumb.vue'
+import Breadcrumb from '@/classes/Breadcrumb.js'
+</script>
+
+<template>
+  <main class="library h-screen bg-white dark:bg-gray-900">
+    <KntH1 text="KntH1" />
+    <KntBreadcrumb :breadcrumbs="[new Breadcrumb('Dashboard', '#'), new Breadcrumb('Page 1', '#'), new Breadcrumb('Page 2', null)]" :mobile-breadcrumb="new Breadcrumb('Back to page 1', '#')" />
+  </main>
+</template>
