@@ -1,4 +1,5 @@
 <script setup>
+import { ArrowRightIcon } from '@heroicons/vue/20/solid/index.js';
 
 import Breadcrumb from '@/classes/Breadcrumb.js';
 
@@ -12,6 +13,8 @@ import KntSmallText from '@/components/text/KntSmallText.vue';
 
 import KntBreadcrumb from '@/components/KntBreadcrumb.vue';
 import KntHomeTile from '@/components/KntHomeTile.vue';
+import KntCard from '@/components/card/KntCard.vue';
+import KntLinkButton from '@/components/button/KntLinkButton.vue';
 
 import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
 </script>
@@ -32,6 +35,18 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
       <KntHomeTile :icon="HomeTileIconsEnum.Events" :title="$t('pages.home.events.title')" link="#" :description="$t('pages.home.events.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Magics" :title="$t('pages.home.magics.title')" link="#" :description="$t('pages.home.magics.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Maps" :title="$t('pages.home.nations.title')" link="#" :description="$t('pages.home.nations.description')" />
+    </div>
+
+    <div class="mt-6 px-4 max-w-screen-xl mx-auto lg:px-16">
+      <KntCard
+        title="KntCard title"
+      >
+        <KntSmallText text="KntSmallText" />
+        <br />
+        <KntSmallText text="KntSmallText" />
+
+        <KntLinkButton to="#">KntLinkButton <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+      </KntCard>
     </div>
   </main>
 </template>
