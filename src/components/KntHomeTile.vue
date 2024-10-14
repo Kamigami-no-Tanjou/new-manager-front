@@ -10,7 +10,7 @@ import {
   CheckBadgeIcon
 } from '@heroicons/vue/24/solid/index.js';
 import KntH5 from '@/components/heading/KntH5.vue';
-import KntSmallText from '@/components/heading/KntSmallText.vue';
+import KntSmallText from '@/components/text/KntSmallText.vue';
 import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
 
 defineProps({
