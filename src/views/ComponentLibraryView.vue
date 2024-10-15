@@ -17,6 +17,7 @@ import KntCard from '@/components/card/KntCard.vue';
 import KntLinkButton from '@/components/button/KntLinkButton.vue';
 
 import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
+import KntImageCard from '@/components/card/KntImageCard.vue'
 </script>
 
 <template>
@@ -37,17 +38,29 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
       <KntHomeTile :icon="HomeTileIconsEnum.Maps" :title="$t('pages.home.nations.title')" link="#" :description="$t('pages.home.nations.description')" />
     </div>
 
-    <div class="mt-6 px-4 max-w-screen-xl mx-auto lg:px-16">
-      <KntCard
-        title="KntCard title"
-      >
-        <KntSmallText text="KntSmallText" />
-        <br />
-        <KntSmallText text="KntSmallText" />
     <div class="mt-6 px-2 max-w-screen-xl grid grid-cols-1 gap-2 mx-auto lg:px-16 lg:grid-cols-3 lg:gap-6">
+      <div>
+        <KntSmallText text="Default card" class="font-medium" />
+        <KntCard
+          class="lg:mt-1.5"
+        >
+          <template v-slot:title>
+            <div class="flex justify-between items-center">
+              <RouterLink to="#"><KntH4 text="Mi Vulca" /></RouterLink>
+              <RouterLink to="#"><KntH6 text="Vulcain" /></RouterLink>
+            </div>
+          </template>
 
-        <KntLinkButton to="#">KntLinkButton <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
-      </KntCard>
+          <KntH6 :text="$t('pages.charactersList.magics')" />
+          <RouterLink to="#" class="ml-2 mb-2"><KntSmallText text="Magie des explosions" /></RouterLink>
+          <br/>
+          <RouterLink to="#" class="ml-2"><KntSmallText text="Magie de lévitation" /></RouterLink>
+
+          <KntLinkButton to="#">{{ $t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+        </KntCard>
+      </div>
+      <div>
+        <KntSmallText text="Image card" class="font-medium" />
         <KntImageCard
           image-u-r-i="https://knt-manager.chimura-ryouwasa.top/maps/2/image"
           title="Carte de Vulcain peu de temps avant l'invasion askarienne"
@@ -55,6 +68,10 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
         >
           <KntLinkButton to="#">{{ $t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
         </KntImageCard>
+      </div>
+      <div>
+        <KntSmallText text="Tabbed card" class="font-medium" />
+      </div>
     </div>
   </main>
 </template>
