@@ -48,6 +48,13 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
 
         <KntLinkButton to="#">KntLinkButton <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
       </KntCard>
+        <KntImageCard
+          image-u-r-i="https://knt-manager.chimura-ryouwasa.top/maps/2/image"
+          title="Carte de Vulcain peu de temps avant l'invasion askarienne"
+          class="lg:mt-1.5"
+        >
+          <KntLinkButton to="#">{{ $t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+        </KntImageCard>
     </div>
   </main>
 </template>
