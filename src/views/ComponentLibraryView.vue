@@ -20,7 +20,7 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
 </script>
 
 <template>
-  <main class="library min-h-screen bg-white dark:bg-gray-900">
+  <main class="library min-h-screen bg-white p-2 lg:p-7 dark:bg-gray-900">
     <KntH1 text="KntH1" />
     <KntH2 text="KntH2" />
     <KntH3 text="KntH3" />
@@ -30,7 +30,7 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
     <KntBreadcrumb :breadcrumbs="[new Breadcrumb('Dashboard', '#'), new Breadcrumb('Page 1', '#'), new Breadcrumb('Page 2', null)]" :mobile-breadcrumb="new Breadcrumb('Back to page 1', '#')" />
     <KntSmallText text="This is a small text! :D" />
 
-    <div class="mt-6 grid grid-cols-2 gap-2 px-4 max-w-screen-xl mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
+    <div class="mt-6 grid grid-cols-2 gap-2 px-2 max-w-screen-xl mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
       <KntHomeTile :icon="HomeTileIconsEnum.Characters" :title="$t('pages.home.characters.title')" link="#" :description="$t('pages.home.characters.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Events" :title="$t('pages.home.events.title')" link="#" :description="$t('pages.home.events.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Magics" :title="$t('pages.home.magics.title')" link="#" :description="$t('pages.home.magics.description')" />
@@ -44,6 +44,7 @@ import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
         <KntSmallText text="KntSmallText" />
         <br />
         <KntSmallText text="KntSmallText" />
+    <div class="mt-6 px-2 max-w-screen-xl grid grid-cols-1 gap-2 mx-auto lg:px-16 lg:grid-cols-3 lg:gap-6">
 
         <KntLinkButton to="#">KntLinkButton <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
       </KntCard>
