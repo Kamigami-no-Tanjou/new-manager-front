@@ -5,13 +5,13 @@ defineProps({
     required: false,
     default: ''
   }
-})
+});
 </script>
 
 <template v-slot="title">
-  <h3
-    class="mb-5 text-3xl text-gray-900 font-bold antialiased lg:mb-3 lg:text-3xl dark:text-white"
+  <h6
+    class="mb-2 text-md font-bold text-gray-700 antialiased dark:text-gray-400"
   >
     {{ text }}
-  </h3>
+  </h6>
 </template>

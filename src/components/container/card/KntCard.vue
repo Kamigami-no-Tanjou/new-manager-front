@@ -1,5 +1,5 @@
 <script setup>
-import KntH4 from '@/components/heading/KntH4.vue'
+import KntH4 from '@/components/text/heading/KntH4.vue';
 
 defineProps({
   title: {
@@ -7,7 +7,7 @@ defineProps({
     required: false,
     default: null
   }
-})
+});
 </script>
 
 <template>

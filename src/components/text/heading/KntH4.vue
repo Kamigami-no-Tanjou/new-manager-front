@@ -5,7 +5,7 @@ defineProps({
     required: false,
     default: ''
   }
-})
+});
 </script>
 
 <template v-slot="title">
