@@ -1,7 +1,8 @@
 <script setup>
-import Breadcrumb from '@/classes/Breadcrumb.js';
 import { HomeIcon } from '@heroicons/vue/20/solid/index.js';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline/index.js';
+
+import Breadcrumb from '@/classes/Breadcrumb.js';
 
 defineProps({
   breadcrumbs: {
