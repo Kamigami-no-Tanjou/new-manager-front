@@ -26,6 +26,15 @@ import KntImageCard from '@/components/container/card/KntImageCard.vue';
 import KntTabbedCard from '@/components/container/card/KntTabbedCard.vue';
 
 import KntLinkButton from '@/components/input/button/KntLinkButton.vue';
+import KntTable from '@/components/container/table/KntTable.vue'
+import KntTableHead from '@/components/container/table/KntTableHead.vue'
+import KntTableHeadRow from '@/components/container/table/KntTableHeadRow.vue'
+import KntTableHeadCell from '@/components/container/table/KntTableHeadCell.vue'
+import KntTableBody from '@/components/container/table/KntTableBody.vue'
+import KntTableBodyRow from '@/components/container/table/KntTableBodyRow.vue'
+import KntTableBodyCell from '@/components/container/table/KntTableBodyCell.vue'
+import { actionClasses } from '@/constants.js'
+import { Action } from '../enums/Action.js'
 
 /***************************************************************/
 
@@ -105,6 +114,69 @@ const selectedTab = ref(generalTab.tabId);
             <KntH4 text="Second tab..." />
           </KntTab>
         </KntTabbedCard>
+      </div>
+    </div>
+
+    <div class="hidden lg:block mt-6 px-16 max-w-screen-xl mx-auto">
+      <div class="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
+        <KntTable>
+          <KntTableHead>
+            <KntTableHeadRow :actions="1">
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.name') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.potential') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.firstMagic') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.secondMagic') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.origin') }}</KntTableHeadCell>
+            </KntTableHeadRow>
+          </KntTableHead>
+
+          <KntTableBody>
+            <KntTableBodyRow>
+              <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Mi Vulca</KntTableBodyCell>
+              <KntTableBodyCell extra-classes="text-center">682 {{ t('application.units.ubert.short') }}</KntTableBodyCell>
+              <KntTableBodyCell>Magie des explosions</KntTableBodyCell>
+              <KntTableBodyCell>Magie de lévitation</KntTableBodyCell>
+              <KntTableBodyCell>Vulcain</KntTableBodyCell>
+              <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+            </KntTableBodyRow>
+            <KntTableBodyRow>
+              <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Friedrich Vulca</KntTableBodyCell>
+              <KntTableBodyCell extra-classes="text-center">567 {{ t('application.units.ubert.short') }}</KntTableBodyCell>
+              <KntTableBodyCell>Magie d'enchantement</KntTableBodyCell>
+              <KntTableBodyCell>Magie de vitesse</KntTableBodyCell>
+              <KntTableBodyCell>Vulcain</KntTableBodyCell>
+              <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+            </KntTableBodyRow>
+            <KntTableBodyRow>
+              <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Anya Vulca Somvisar</KntTableBodyCell>
+              <KntTableBodyCell extra-classes="text-center">181 {{ t('application.units.ubert.short') }}</KntTableBodyCell>
+              <KntTableBodyCell>Magie de renforcement</KntTableBodyCell>
+              <KntTableBodyCell></KntTableBodyCell>
+              <KntTableBodyCell>Vulcain</KntTableBodyCell>
+              <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+            </KntTableBodyRow>
+          </KntTableBody>
+        </KntTable>
+      </div>
+
+      <div class="mt-6 p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
+        <KntTable>
+          <KntTableHead>
+            <KntTableHeadRow :actions="1">
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.name') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.potential') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.firstMagic') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.secondMagic') }}</KntTableHeadCell>
+              <KntTableHeadCell>{{ t('pages.charactersList.charactersTable.origin') }}</KntTableHeadCell>
+            </KntTableHeadRow>
+          </KntTableHead>
+
+          <KntTableBody>
+            <KntTableBodyRow>
+              <KntTableBodyCell :colspan="6" extra-classes="text-center">{{ t('pages.charactersList.charactersTable.empty') }}</KntTableBodyCell>
+            </KntTableBodyRow>
+          </KntTableBody>
+        </KntTable>
       </div>
     </div>
   </main>
