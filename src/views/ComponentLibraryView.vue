@@ -37,6 +37,17 @@ import { actionClasses } from '@/constants.js'
 import { Action } from '../enums/Action.js'
 import KntTabbedContainer from '@/components/container/KntTabbedContainer.vue'
 import KntParagraph from '@/components/text/KntParagraph.vue'
+import KntTable from '@/components/container/table/KntTable.vue';
+import KntTableHead from '@/components/container/table/KntTableHead.vue';
+import KntTableHeadRow from '@/components/container/table/KntTableHeadRow.vue';
+import KntTableHeadCell from '@/components/container/table/KntTableHeadCell.vue';
+import KntTableBody from '@/components/container/table/KntTableBody.vue';
+import KntTableBodyRow from '@/components/container/table/KntTableBodyRow.vue';
+import KntTableBodyCell from '@/components/container/table/KntTableBodyCell.vue';
+import { actionClasses } from '@/constants.js';
+import { Action } from '../enums/Action.js';
+import KntTabbedContainer from '@/components/container/KntTabbedContainer.vue';
+import KntParagraph from '@/components/text/KntParagraph.vue';
 
 /***************************************************************/
 
@@ -67,6 +78,7 @@ function changed(what) {
     <KntH5 text="KntH5" />
     <KntH6 text="KntH6" />
     <KntBreadcrumb :breadcrumbs="[new Breadcrumb('Dashboard', '#'), new Breadcrumb('Page 1', '#'), new Breadcrumb('Page 2', null)]" :mobile-breadcrumb="new Breadcrumb('Back to page 1', '#')" />
+    <KntParagraph text="This is a regular paragraph" />
     <KntSmallText text="This is a small text! :D" />
 
     <div class="mt-6 grid grid-cols-2 gap-2 px-2 max-w-screen-xl mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
