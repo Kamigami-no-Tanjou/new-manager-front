@@ -52,6 +52,10 @@ const containerFortressTab = new Tab("Forteresses", "fortresses");
 
 const selectedCardTab = ref(cardGeneralTab.tabId);
 const selectedContainerTab = ref(containerAssassinTab.tabId);
+
+function changed(what) {
+  console.log("changed " + what);
+}
 </script>
 
 <template>
@@ -105,7 +109,7 @@ const selectedContainerTab = ref(containerAssassinTab.tabId);
       </div>
       <div>
         <KntSmallText text="Tabbed card" class="font-medium" />
-        <KntTabbedCard :tabs-position="TabsPosition.Bottom" v-model="selectedCardTab" class="mb-2 lg:mb-6">
+        <KntTabbedCard :tabs-position="TabsPosition.Bottom" v-model="selectedCardTab" class="mb-2 lg:mb-6 lg:mt-1.5" @tab-switch="changed('Tabbed card bottom')">
           <KntTab :tab-id="cardGeneralTab.tabId" :tab-name="cardGeneralTab.label">
             <KntH4 text="First tab..." />
           </KntTab>
@@ -114,7 +118,7 @@ const selectedContainerTab = ref(containerAssassinTab.tabId);
           </KntTab>
         </KntTabbedCard>
 
-        <KntTabbedCard :tabs-position="TabsPosition.Top" v-model="selectedCardTab">
+        <KntTabbedCard :tabs-position="TabsPosition.Top" v-model="selectedCardTab" @tab-switch="changed('Tabbed card top')">
           <KntTab :tab-id="cardGeneralTab.tabId" :tab-name="cardGeneralTab.label">
             <KntH4 text="First tab..." />
           </KntTab>
@@ -191,7 +195,7 @@ const selectedContainerTab = ref(containerAssassinTab.tabId);
     <div class="hidden lg:block mt-6 px-16 max-w-screen-xl mx-auto">
       <KntH2 class="p-4" :text="t('pages.magicalClasses.title')" />
 
-      <KntTabbedContainer v-model="selectedContainerTab">
+      <KntTabbedContainer v-model="selectedContainerTab"  @tab-switch="changed('Tabbed container')">
         <KntTab :tab-name="containerAssassinTab.label" :tab-id="containerAssassinTab.tabId">
           <KntParagraph class="mb-4" text="La classe de magie Assassin désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont vulnérables en combat rapproché." />
           <KntTable>

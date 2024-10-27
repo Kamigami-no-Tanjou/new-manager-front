@@ -3,6 +3,7 @@ import { TabsPosition } from '@/enums/TabsPosition.js';
 import { ref, provide } from 'vue';
 
 const selectedTab = defineModel();
+const emit = defineEmits(['tab-switch']);
 defineProps({
   tabsPosition: {
     type: String,
@@ -16,6 +17,13 @@ provide('registerTab', (tab) => {
   tabs.value.push(tab);
 });
 provide('selectedTab', selectedTab);
+
+function switchTab(tab) {
+  if (tab.tabId === selectedTab.value) return;
+
+  selectedTab.value = tab.tabId;
+  emit('tab-switch', tab);
+}
 
 const tabContainerStyle = "flex text-sm font-medium divide-x divide-gray-200 border-gray-200 " +
                           "dark:divide-gray-600 dark:border-gray-600";
@@ -35,7 +43,7 @@ const unselectedTabButtonStyle = " text-gray-500 hover:text-gray-600 dark:text-g
     >
       <li v-for="tab in tabs" :key="tab.tabId" class="w-full">
         <button
-          @click="selectedTab = tab.tabId"
+          @click="switchTab(tab)"
           :class="(tabButtonStyle) + ((selectedTab === tab.tabId)? selectedTabButtonStyle: unselectedTabButtonStyle) + ((tab === tabs[0])? ' rounded-tl-lg': '') + ((tab === tabs[tabs.length-1])? ' rounded-tr-lg': '')"
         >
           {{ tab.label }}
@@ -56,7 +64,7 @@ const unselectedTabButtonStyle = " text-gray-500 hover:text-gray-600 dark:text-g
     >
       <li v-for="tab in tabs" :key="tab.tabId" class="w-full">
         <button
-          @click="selectedTab = tab.tabId"
+          @click="switchTab(tab)"
           :class="(tabButtonStyle) + ((selectedTab === tab.tabId)? selectedTabButtonStyle: unselectedTabButtonStyle) + ((tab === tabs[0])? ' rounded-bl-lg': '') + ((tab === tabs[tabs.length-1])? ' rounded-br-lg': '')"
         >
           {{ tab.label }}
