@@ -1,13 +1,19 @@
 <script setup>
-import { ArrowRightIcon } from '@heroicons/vue/20/solid/index.js';
+import { ArrowRightIcon, MagnifyingGlassIcon, CalendarIcon } from '@heroicons/vue/20/solid/index.js';
 import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 
 import Breadcrumb from '@/classes/Breadcrumb.js';
 import Tab from '@/classes/Tab.js';
+import SelectOption from '@/classes/SelectOption.js';
+import RadioOption from '@/classes/RadioOption.js';
+
+import { actionClasses } from '@/constants.js';
 
 import { HomeTileIconsEnum } from '@/enums/HomeTileIconsEnum.js';
 import { TabsPosition } from '@/enums/TabsPosition.js';
+import { Action } from '../enums/Action.js';
+import { InputType } from '@/enums/InputType.js';
 
 import KntH1 from '@/components/text/heading/KntH1.vue';
 import KntH2 from '@/components/text/heading/KntH2.vue';
@@ -26,17 +32,6 @@ import KntImageCard from '@/components/container/card/KntImageCard.vue';
 import KntTabbedCard from '@/components/container/card/KntTabbedCard.vue';
 
 import KntLinkButton from '@/components/input/button/KntLinkButton.vue';
-import KntTable from '@/components/container/table/KntTable.vue'
-import KntTableHead from '@/components/container/table/KntTableHead.vue'
-import KntTableHeadRow from '@/components/container/table/KntTableHeadRow.vue'
-import KntTableHeadCell from '@/components/container/table/KntTableHeadCell.vue'
-import KntTableBody from '@/components/container/table/KntTableBody.vue'
-import KntTableBodyRow from '@/components/container/table/KntTableBodyRow.vue'
-import KntTableBodyCell from '@/components/container/table/KntTableBodyCell.vue'
-import { actionClasses } from '@/constants.js'
-import { Action } from '../enums/Action.js'
-import KntTabbedContainer from '@/components/container/KntTabbedContainer.vue'
-import KntParagraph from '@/components/text/KntParagraph.vue'
 import KntTable from '@/components/container/table/KntTable.vue';
 import KntTableHead from '@/components/container/table/KntTableHead.vue';
 import KntTableHeadRow from '@/components/container/table/KntTableHeadRow.vue';
@@ -44,14 +39,33 @@ import KntTableHeadCell from '@/components/container/table/KntTableHeadCell.vue'
 import KntTableBody from '@/components/container/table/KntTableBody.vue';
 import KntTableBodyRow from '@/components/container/table/KntTableBodyRow.vue';
 import KntTableBodyCell from '@/components/container/table/KntTableBodyCell.vue';
-import { actionClasses } from '@/constants.js';
-import { Action } from '../enums/Action.js';
 import KntTabbedContainer from '@/components/container/KntTabbedContainer.vue';
 import KntParagraph from '@/components/text/KntParagraph.vue';
+import KntInput from '@/components/input/data/KntInput.vue';
+import KntCheckbox from '@/components/input/data/KntCheckbox.vue';
+import KntRadio from '@/components/input/data/KntRadio.vue';
+import KntSwitch from '@/components/input/data/KntSwitch.vue';
 
 /***************************************************************/
 
 const { t } = useI18n();
+
+const unionCalendarOption = new SelectOption(t('application.calendars.union'), "union");
+const beraneseCalendarOption = new SelectOption(t('application.calendars.beranese'), "beranese");
+const ovikCalendarOption = new SelectOption(t('application.calendars.ovik'), "ovik");
+const methianCalendarOption = new SelectOption(t('application.calendars.methian'), "methian");
+const aslimaniCalendarOption = new SelectOption(t('application.calendars.aslimani'), "aslimani");
+const beginningCalendarOption = new SelectOption(t('application.calendars.beginning'), "beginning");
+const zigateCalendarOption = new SelectOption(t('application.calendars.zigate'), "zigate");
+
+const inputText = ref("");
+const selectedOption = ref(unionCalendarOption.value);
+
+const option1 = new RadioOption("Option 1", "option1");
+const option2 = new RadioOption("Option 2", "option2");
+const option3 = new RadioOption("Option 3", "option3");
+
+const selectedRadioOption = ref(option1.value);
 
 const cardGeneralTab = new Tab(t('pages.characterDetails.relationCard.tabs.general'), 'general');
 const cardStoryTab = new Tab(t('pages.characterDetails.relationCard.tabs.story'), 'story');
@@ -80,6 +94,47 @@ function changed(what) {
     <KntBreadcrumb :breadcrumbs="[new Breadcrumb('Dashboard', '#'), new Breadcrumb('Page 1', '#'), new Breadcrumb('Page 2', null)]" :mobile-breadcrumb="new Breadcrumb('Back to page 1', '#')" />
     <KntParagraph text="This is a regular paragraph" />
     <KntSmallText text="This is a small text! :D" />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-4">
+      <KntInput :type="InputType.Text" placeholder="I am a placeholder..." v-model="inputText" @input="changed('Text input')"></KntInput>
+      <KntInput :type="InputType.Text" placeholder="I am a placeholder..." v-model="inputText" @input="changed('Text input with icon')">
+        <MagnifyingGlassIcon />
+      </KntInput>
+      <KntInput :type="InputType.Date" placeholder="I am a date..." v-model="inputText" @input="changed('Date input')"></KntInput>
+      <KntInput :type="InputType.Password" placeholder="I am a password..." v-model="inputText" @input="changed('Password input')"></KntInput>
+      <KntInput :type="InputType.Number" placeholder="I am a number..." v-model="inputText" @input="changed('Number input')"></KntInput>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-4">
+      <KntInput :type="InputType.Select" placeholder="I am a placeholder..." v-model="selectedOption"
+                :options="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]"
+                @change="changed('Select input')"
+      ></KntInput>
+      <KntInput :type="InputType.Select" placeholder="I am a placeholder..." v-model="selectedOption"
+                :options="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]"
+                @change="changed('Select input with icon')"
+      >
+        <CalendarIcon />
+      </KntInput>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 lg:grid-cols-5 mt-4">
+      <div>
+        <KntCheckbox label="I am a label" name="checkbox" class="mb-2" @change="changed('Checkbox1')" />
+        <KntCheckbox label="I am a label" name="checkbox2" class="mb-2" @change="changed('Checkbox2')" />
+        <KntCheckbox label="I am a label" name="checkbox3" @change="changed('Checkbox3')" />
+      </div>
+
+      <div>
+        <KntRadio v-model="selectedRadioOption" name="radio" :options="[option1, option2, option3]" @change="changed(selectedRadioOption)" />
+      </div>
+
+      <div>
+        <KntSwitch label="I am a label" name="switch" class="mb-2" @change="changed('Switch1')" />
+        <KntSwitch label="I am a label" name="switch2" class="mb-2" @change="changed('Switch2')" />
+        <KntSwitch label="I am a label" name="switch3" @change="changed('Switch3')" />
+      </div>
+    </div>
 
     <div class="mt-6 grid grid-cols-2 gap-2 px-2 max-w-screen-xl mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
       <KntHomeTile :icon="HomeTileIconsEnum.Characters" :title="t('pages.home.characters.title')" link="#" :description="t('pages.home.characters.description')" />
