@@ -6,8 +6,9 @@ import Breadcrumb from '@/classes/Breadcrumb.js';
 
 defineProps({
   breadcrumbs: {
-    type: Array.of(Breadcrumb),
-    required: true
+    type: Array,
+    required: true,
+    validator: (value) => value.every((itm) => itm instanceof Breadcrumb)
   },
   mobileBreadcrumb: {
     type: Breadcrumb,
