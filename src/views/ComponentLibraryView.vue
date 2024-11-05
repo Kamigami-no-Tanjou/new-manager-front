@@ -7,6 +7,7 @@ import Breadcrumb from '@/classes/Breadcrumb.js';
 import Tab from '@/classes/Tab.js';
 import SelectOption from '@/classes/SelectOption.js';
 import RadioOption from '@/classes/RadioOption.js';
+import TimelineItem from '@/classes/TimelineItem.js';
 
 import { actionClasses } from '@/constants.js';
 
@@ -45,6 +46,7 @@ import KntInput from '@/components/input/data/KntInput.vue';
 import KntCheckbox from '@/components/input/data/KntCheckbox.vue';
 import KntRadio from '@/components/input/data/KntRadio.vue';
 import KntSwitch from '@/components/input/data/KntSwitch.vue';
+import KntTimeline from '@/components/KntTimeline.vue';
 
 /***************************************************************/
 
@@ -77,6 +79,11 @@ const containerFortressTab = new Tab("Forteresses", "fortresses");
 
 const selectedCardTab = ref(cardGeneralTab.tabId);
 const selectedContainerTab = ref(containerAssassinTab.tabId);
+
+const timelineFirstItem = new TimelineItem("First item", "4/11/2024");
+const timelineSecondItem = new TimelineItem("Second item", "5/11/2024");
+const timelineThirdItem = new TimelineItem("Third item", "6/11/2024");
+const timelineLastItem = new TimelineItem("Last item", "7/11/2024");
 
 function changed(what) {
   console.log("changed " + what);
@@ -358,6 +365,12 @@ function changed(what) {
           </KntTable>
         </KntTab>
       </KntTabbedContainer>
+    </div>
+
+    <div class="lg:block mt-6 px-2 lg:px-16 max-w-screen-xl mx-auto">
+      <div class="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
+        <KntTimeline :first-element="timelineFirstItem" :last-element="timelineLastItem" :middle-elements="[timelineSecondItem, timelineThirdItem]" />
+      </div>
     </div>
   </main>
 </template>
