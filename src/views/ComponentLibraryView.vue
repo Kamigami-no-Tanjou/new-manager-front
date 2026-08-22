@@ -45,9 +45,11 @@ import KntInput from '@/components/input/data/KntInput.vue';
 import KntCheckbox from '@/components/input/data/KntCheckbox.vue';
 import KntRadio from '@/components/input/data/KntRadio.vue';
 import KntSwitch from '@/components/input/data/KntSwitch.vue';
+import KntDrawerOpenButton from '@/components/container/drawer/KntDrawerOpenButton.vue';
 
 /***************************************************************/
 
+const emit = defineEmits(['open-drawer']);
 const { t } = useI18n();
 
 const unionCalendarOption = new SelectOption(t('application.calendars.union'), "union");
@@ -81,6 +83,10 @@ const selectedContainerTab = ref(containerAssassinTab.tabId);
 function changed(what) {
   console.log("changed " + what);
 }
+
+function openDrawer() {
+  emit('open-drawer');
+}
 </script>
 
 <template>
@@ -94,6 +100,10 @@ function changed(what) {
     <KntBreadcrumb :breadcrumbs="[new Breadcrumb('Dashboard', '#'), new Breadcrumb('Page 1', '#'), new Breadcrumb('Page 2', null)]" :mobile-breadcrumb="new Breadcrumb('Back to page 1', '#')" />
     <KntParagraph text="This is a regular paragraph" />
     <KntSmallText text="This is a small text! :D" />
+
+    <div class="mt-4">
+      <KntDrawerOpenButton @open-drawer="openDrawer()" />
+    </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-4">
       <KntInput :type="InputType.Text" placeholder="I am a placeholder..." v-model="inputText" @input="changed('Text input')"></KntInput>
@@ -167,7 +177,7 @@ function changed(what) {
       <div>
         <KntSmallText text="Image card" class="font-medium" />
         <KntImageCard
-          image-u-r-i="https://knt-manager.chimura-ryouwasa.top/maps/2/image"
+          image-u-r-i="http://localhost:8000/maps/2/image"
           title="Carte de Vulcain peu de temps avant l'invasion askarienne"
           class="lg:mt-1.5"
         >
