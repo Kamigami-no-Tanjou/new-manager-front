@@ -4,13 +4,21 @@ defineProps({
     type: String,
     required: false,
     default: ''
+  },
+  unmargined: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 });
+
+const headingStyle = "text-3xl text-gray-900 font-bold antialiased dark:text-white";
+const marginStyle = "mb-5 lg:mb-3";
 </script>
 
 <template v-slot="title">
   <h3
-    class="mb-5 text-3xl text-gray-900 font-bold antialiased lg:mb-3 lg:text-3xl dark:text-white"
+    :class="headingStyle + (unmargined ? '' : ' ' + marginStyle)"
   >
     {{ text }}
   </h3>

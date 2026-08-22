@@ -24,6 +24,11 @@ defineProps({
     default: () => [],
     validator: (value) => value.every((itm) => itm instanceof SelectOption)
   },
+  fieldId: {
+    type: String,
+    required: false,
+    default: null,
+  }
 });
 
 const iconInputStyle = ' pl-10';
@@ -44,6 +49,7 @@ const defaultInputStyle =
 
     <select
       v-if="type === InputType.Select"
+      :id="fieldId"
       v-model="model"
       :class="
         defaultInputStyle + selectPadding + (hasIcon ? iconInputStyle : '')
@@ -60,6 +66,7 @@ const defaultInputStyle =
 
     <input
       v-else
+      :id="fieldId"
       v-model="model"
       :type="type"
       :placeholder="placeholder"

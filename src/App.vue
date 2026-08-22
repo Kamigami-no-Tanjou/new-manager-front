@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
 import SelectOption from '@/classes/SelectOption.js';
 
+import KntHeader from '@/components/header/KntHeader.vue';
 import KntDrawer from '@/components/container/drawer/KntDrawer.vue';
 
 const { t } = useI18n();
@@ -32,16 +33,15 @@ function closeDrawer() {
 <template>
   <header>
     <div class="wrapper">
-      <!--nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-
-        <RouterLink to="/library">ComponentLibrary</RouterLink>
-      </nav-->
+      <KntHeader
+        :current-calendar="currentCalendar"
+        :calendars="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]"
+        @open-drawer="openDrawer()"
+      />
     </div>
   </header>
 
   <KntDrawer v-model="isDrawerOpen" :current-calendar="currentCalendar" :calendars="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]" />
-  <RouterView @open-drawer="openDrawer()"/>
+  <RouterView class="pt-20 lg:pt-24" @open-drawer="openDrawer()"/>
   <div v-if="isDrawerOpen" @click="closeDrawer()" class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30"></div>
 </template>
