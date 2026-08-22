@@ -1,8 +1,11 @@
 <script setup>
 import { HomeIcon } from '@heroicons/vue/20/solid/index.js';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline/index.js';
+import { useI18n } from 'vue-i18n';
 
 import Breadcrumb from '@/classes/Breadcrumb.js';
+
+const { t } = useI18n();
 
 defineProps({
   breadcrumbs: {
@@ -33,10 +36,15 @@ defineProps({
       </li>
     </ol>
 
-    <RouterLink :to="mobileBreadcrumb.link"
+    <RouterLink v-if="mobileBreadcrumb" :to="mobileBreadcrumb.link"
                 class="inline-flex items-center text-sm font-medium text-gray-700 lg:hidden hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
     >
       <ChevronLeftIcon class="mx-2.5 w-4 h-4 stroke-[3.5px]" /> {{ mobileBreadcrumb.text }}
+    </RouterLink>
+    <RouterLink v-else :to="{ name: 'home' }"
+                class="inline-flex items-center text-sm font-medium text-gray-700 lg:hidden hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+    >
+      <HomeIcon class="mx-2.5 w-4 h-4 stroke-[3.5px]" /> {{ t('navigation.dashboard') }}
     </RouterLink>
   </nav>
 </template>

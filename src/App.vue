@@ -42,6 +42,6 @@ function closeDrawer() {
   </header>
 
   <KntDrawer v-model="isDrawerOpen" :current-calendar="currentCalendar" :calendars="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]" />
-  <RouterView class="pt-20 lg:pt-24" @open-drawer="openDrawer()"/>
+  <RouterView class="pt-20 lg:pt-28" @open-drawer="openDrawer()"/>
   <div v-if="isDrawerOpen" @click="closeDrawer()" class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30"></div>
 </template>

@@ -28,15 +28,19 @@ defineProps({
   },
   link: {
     type: String,
-    required: true
+    required: false
+  },
+  route: {
+    type: Object,
+    required: false
   }
 });
 </script>
 
 <template>
   <RouterLink
-    :to="link"
-    class="block w-full p-2 text-center bg-wihte border border-gray-200 rounded-md shadow ring-blue-500/25 focus:ring-4 lg:p-6 lg:rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+    :to="link || route"
+    class="block w-full p-2 text-center bg-white border border-gray-200 rounded-md shadow ring-blue-500/25 focus:ring-4 lg:p-6 lg:rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
   >
     <UsersIcon
       v-if="icon === HomeTileIconsEnum.Characters"

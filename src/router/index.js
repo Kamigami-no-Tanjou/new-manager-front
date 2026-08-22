@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/ComponentLibraryView.vue')
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/library',
@@ -38,8 +38,23 @@ const router = createRouter({
       component: () => import('../views/ComponentLibraryView.vue')
     },
     {
+      path: '/classes',
+      name: 'magicalClasses',
+      component: () => import('../views/ComponentLibraryView.vue')
+    },
+    {
       path: '/mpc',
       name: 'mpc',
+      component: () => import('../views/ComponentLibraryView.vue')
+    },
+    {
+      path: '/elems',
+      name: 'elements',
+      component: () => import('../views/ComponentLibraryView.vue')
+    },
+    {
+      path: '/leaders',
+      name: 'nationLeaders',
       component: () => import('../views/ComponentLibraryView.vue')
     },
   ]
