@@ -1,5 +1,5 @@
 <script setup>
-import { ArrowRightIcon, MagnifyingGlassIcon, CalendarIcon } from '@heroicons/vue/20/solid/index.js';
+import { ArrowRightIcon, MagnifyingGlassIcon, CalendarIcon, PlusIcon } from '@heroicons/vue/20/solid/index.js';
 import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 
@@ -47,11 +47,14 @@ import KntRadio from '@/components/input/data/KntRadio.vue';
 import KntSwitch from '@/components/input/data/KntSwitch.vue';
 import KntDrawerOpenButton from '@/components/container/drawer/KntDrawerOpenButton.vue';
 import KntActionButton from '@/components/input/button/KntActionButton.vue';
+import KntActionDialog from '@/components/container/dialog/KntActionDialog.vue';
 
 /***************************************************************/
 
 const emit = defineEmits(['open-drawer']);
 const { t } = useI18n();
+
+const addCharacterDialog = ref(null);
 
 const unionCalendarOption = new SelectOption(t('application.calendars.union'), "union");
 const beraneseCalendarOption = new SelectOption(t('application.calendars.beranese'), "beranese");
@@ -88,6 +91,18 @@ function changed(what) {
 function openDrawer() {
   emit('open-drawer');
 }
+
+function registerDialog(dialog) {
+  addCharacterDialog.value = dialog;
+}
+
+function openDialog() {
+  addCharacterDialog.value.showModal();
+}
+
+function closeDialog() {
+  addCharacterDialog.value.close();
+}
 </script>
 
 <template>
@@ -104,7 +119,32 @@ function openDrawer() {
 
     <div class="flex gap-4 mt-4 items-center">
       <KntDrawerOpenButton @open-drawer="openDrawer()" />
-      <KntActionButton @click="changed('Action button clicked')">Click me!</KntActionButton>
+      <KntActionButton @click="changed('Action button clicked')">{{ t('application.actions.search') }}</KntActionButton>
+      <KntActionButton @click="openDialog()">
+        <PlusIcon class="size-5" />
+        <span>{{ t('pages.characterEvents.addCharacter') }}</span>
+      </KntActionButton>
+
+      <KntActionDialog
+        dialog-id="add-character-dialog"
+        :title="t('pages.characterEvents.addCharacterModal.title')"
+        @register-dialog="dialog => registerDialog(dialog)"
+        @close-dialog="closeDialog()"
+      >
+        <label for="character-to-add" class="block font-semibold mb-2">
+          <KntSmallText :text="t('pages.characterEvents.addCharacterModal.character')" />
+        </label>
+        <KntInput field-id="character-to-add" :type="InputType.Select" v-model="selectedOption"
+                  :options="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]"
+                  @change="changed('Select input in dialog')"
+        ></KntInput>
+        <template v-slot:action>
+          <KntActionButton @click="changed('Action button in dialog clicked')">
+            <PlusIcon class="size-5" />
+            <span>{{ t('pages.characterEvents.addCharacterModal.add') }}</span>
+          </KntActionButton>
+        </template>
+      </KntActionDialog>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-4">
