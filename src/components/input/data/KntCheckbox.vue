@@ -15,7 +15,7 @@ defineProps({
 
 <template>
   <div class="flex items-center antialiased">
-    <input v-model="model" :id="name" type="checkbox" :name="name" class="size-4 shadow bg-gray-50 text-blue-500 outline-none appearance-none border border-gray-300 rounded focus:ring-4 focus:ring-blue-500/25 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600">
+    <input v-model="model" :id="name" type="checkbox" :name="name" class="size-4 shadow-sm bg-gray-50 text-blue-500 outline-hidden appearance-none border border-gray-300 rounded-sm focus:ring-4 focus:ring-blue-500/25 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600">
     <label :for="name" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ label }}</label>
   </div>
 </template>

@@ -27,7 +27,7 @@ const radioStyle = "flex items-center antialiased";
 
 <template>
   <div v-for="option in options" :key="option.value" :class="radioStyle + (option.value !== options[options.length - 1].value? marginRadioStyle: '')">
-    <input v-model="model" :id="option.value" type="radio" :value="option.value" :name="name" @change="change(option)" class="size-4 shadow bg-gray-50 text-blue-500 outline-none appearance-none rounded-full border border-gray-300 focus:ring-4 focus:ring-blue-500/25 dark:bg-gray-700 dark:border-gray-600">
+    <input v-model="model" :id="option.value" type="radio" :value="option.value" :name="name" @change="change(option)" class="size-4 shadow-sm bg-gray-50 text-blue-500 outline-hidden appearance-none rounded-full border border-gray-300 focus:ring-4 focus:ring-blue-500/25 dark:bg-gray-700 dark:border-gray-600">
     <label :for="option.value" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ option.label }}</label>
   </div>
 </template>

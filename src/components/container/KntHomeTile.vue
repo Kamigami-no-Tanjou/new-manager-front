@@ -40,7 +40,7 @@ defineProps({
 <template>
   <RouterLink
     :to="link || route"
-    class="block w-full p-2 text-center bg-white border border-gray-200 rounded-md shadow ring-blue-500/25 focus:ring-4 lg:p-6 lg:rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+    class="block w-full p-2 text-center bg-white border border-gray-200 rounded-md shadow-sm ring-blue-500/25 focus:ring-4 lg:p-6 lg:rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
   >
     <UsersIcon
       v-if="icon === HomeTileIconsEnum.Characters"

@@ -14,7 +14,7 @@ const { t } = useI18n();
 
 <template>
   <main class="home min-h-screen bg-white p-2 lg:p-7 pb-20 dark:bg-gray-900">
-    <div class="max-w-screen-xl mx-auto lg:px-12">
+    <div class="max-w-(--breakpoint-xl) mx-auto lg:px-12">
       <KntBreadcrumb :breadcrumbs="[new Breadcrumb(t('navigation.dashboard'), '/')]" />
 
       <KntH1 :text="t('pages.home.title')" class="mt-8" />

@@ -188,14 +188,14 @@ function closeDialog() {
       </div>
     </div>
 
-    <div class="mt-6 grid grid-cols-2 gap-2 px-2 max-w-screen-xl mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
+    <div class="mt-6 grid grid-cols-2 gap-2 px-2 max-w-(--breakpoint-xl) mx-auto lg:grid-cols-4 lg:gap-6 lg:px-16">
       <KntHomeTile :icon="HomeTileIconsEnum.Characters" :title="t('pages.home.characters.title')" link="#" :description="t('pages.home.characters.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Events" :title="t('pages.home.events.title')" link="#" :description="t('pages.home.events.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Magics" :title="t('pages.home.magics.title')" link="#" :description="t('pages.home.magics.description')" />
       <KntHomeTile :icon="HomeTileIconsEnum.Maps" :title="t('pages.home.nations.title')" link="#" :description="t('pages.home.nations.description')" />
     </div>
 
-    <div class="mt-6 px-2 max-w-screen-xl grid grid-cols-1 gap-2 mx-auto lg:px-16 lg:grid-cols-3 lg:gap-6">
+    <div class="mt-6 px-2 max-w-(--breakpoint-xl) grid grid-cols-1 gap-2 mx-auto lg:px-16 lg:grid-cols-3 lg:gap-6">
       <div>
         <KntSmallText text="Default card" class="font-medium" />
         <KntCard
@@ -248,7 +248,7 @@ function closeDialog() {
       </div>
     </div>
 
-    <div class="hidden lg:block mt-6 px-16 max-w-screen-xl mx-auto">
+    <div class="hidden lg:block mt-6 px-16 max-w-(--breakpoint-xl) mx-auto">
       <div class="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
         <KntTable>
           <KntTableHead>
@@ -311,7 +311,7 @@ function closeDialog() {
       </div>
     </div>
 
-    <div class="hidden lg:block mt-6 px-16 max-w-screen-xl mx-auto">
+    <div class="hidden lg:block mt-6 px-16 max-w-(--breakpoint-xl) mx-auto">
       <KntH2 class="p-4" :text="t('pages.magicalClasses.title')" />
 
       <KntTabbedContainer v-model="selectedContainerTab"  @tab-switch="changed('Tabbed container')">

@@ -34,7 +34,7 @@ const unselectedTabButtonStyle = " text-gray-500 hover:text-gray-600 dark:text-g
 
 <template>
   <div
-    class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600"
+    class="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600"
   >
     <ul
       v-if="tabsPosition === TabsPosition.Top"

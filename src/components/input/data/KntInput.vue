@@ -35,7 +35,7 @@ const iconInputStyle = ' pl-10';
 const inputPadding = ' p-2';
 const selectPadding = ' p-2.5';
 const defaultInputStyle =
-  'block antialiased w-full shadow bg-gray-50 text-sm text-gray-900 border border-gray-300 rounded-lg ring-offset-1 focus:outline focus:outline-blue-500 focus:outline-offset-0 focus:outline-1 focus:ring-4 focus:ring-blue-500/25 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white';
+  'block antialiased w-full shadow-sm bg-gray-50 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-offset-1 focus:outline-solid focus:outline-blue-500 focus:outline-offset-0 focus:outline-1 focus:ring-4 focus:ring-blue-500/25 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white';
 </script>
 
 <template>

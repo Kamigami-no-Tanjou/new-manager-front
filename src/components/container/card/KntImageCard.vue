@@ -26,7 +26,7 @@ defineProps({
 
 <template>
   <div
-    class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600"
+    class="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600"
   >
     <RouterLink v-if="imageLink !== null" :to="imageLink">
       <img class="rounded-t-lg w-full" :src="imageURI" :alt="imageAlt" />
