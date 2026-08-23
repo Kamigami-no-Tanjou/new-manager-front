@@ -46,6 +46,7 @@ import KntCheckbox from '@/components/input/data/KntCheckbox.vue';
 import KntRadio from '@/components/input/data/KntRadio.vue';
 import KntSwitch from '@/components/input/data/KntSwitch.vue';
 import KntDrawerOpenButton from '@/components/container/drawer/KntDrawerOpenButton.vue';
+import KntActionButton from '@/components/input/button/KntActionButton.vue';
 
 /***************************************************************/
 
@@ -101,8 +102,9 @@ function openDrawer() {
     <KntParagraph text="This is a regular paragraph" />
     <KntSmallText text="This is a small text! :D" />
 
-    <div class="mt-4">
+    <div class="flex gap-4 mt-4 items-center">
       <KntDrawerOpenButton @open-drawer="openDrawer()" />
+      <KntActionButton @click="changed('Action button clicked')">Click me!</KntActionButton>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-4">
