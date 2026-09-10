@@ -17,7 +17,8 @@ const emit = defineEmits(['change-calendar', 'change-search']);
 const props = defineProps({
   currentCalendar: {
     type: SelectOption,
-    required: true
+    required: false,
+    default: null,
   },
   calendars: {
     type: Array,
@@ -43,7 +44,7 @@ function changedSearch() {
 }
 
 onMounted(() => {
-  selectedCalendar.value = ref(props.currentCalendar.value);
+  selectedCalendar.value = props.currentCalendar === null ? ref(null) : ref(props.currentCalendar.value);
 });
 
 const drawerStyles = "fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-screen lg:w-96 dark:bg-gray-800";
@@ -66,7 +67,8 @@ const openDrawerStyles = "translate-x-0";
     <div class="lg:hidden mb-6">
       <KntH6 :uppercase="true" :text="t('application.calendars.title')" />
       <KntInput
-        :type="InputType.Select" 
+        :skeleton="selectedCalendar === null"
+        :type="InputType.Select"
         v-model="selectedCalendar"
         :options="calendars"
         @change="changeCalendar()"

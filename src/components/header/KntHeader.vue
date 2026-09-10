@@ -1,7 +1,7 @@
 <script setup>
 import { CalendarIcon, CubeTransparentIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
 import { useI18n } from 'vue-i18n';
-import { ref, onMounted } from 'vue';
+import { ref, onUpdated } from 'vue';
 
 import SelectOption from '@/classes/SelectOption.js';
 
@@ -20,7 +20,8 @@ const emit = defineEmits(['change-calendar', 'change-search', 'open-drawer']);
 const props = defineProps({
   currentCalendar: {
     type: SelectOption,
-    required: true
+    required: false,
+    default: null,
   },
   calendars: {
     type: Array,
@@ -50,9 +51,9 @@ function redirectToComponentLibrary() {
   router.push({ name: 'componentLibrary' });
 }
 
-onMounted(() => {
-  selectedCalendar.value = ref(props.currentCalendar.value);
-});
+onUpdated(() => {
+  selectedCalendar.value = selectedCalendar.value === null ? props.currentCalendar : selectedCalendar.value;
+})
 </script>
 
 <template>
@@ -70,7 +71,9 @@ onMounted(() => {
             <CalendarIcon class="size-6" />
           </label>
           <KntInput
-          :field-id="calendar-selector"
+          :skeleton="selectedCalendar === null"
+          placeholder="bonjour"
+          field-id="calendar-selector"
           :type="InputType.Select"
           v-model="selectedCalendar"
           :options="calendars"

@@ -1,24 +1,19 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import { RouterView } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-
-import SelectOption from '@/classes/SelectOption.js';
 
 import KntHeader from '@/components/header/KntHeader.vue';
 import KntDrawer from '@/components/container/drawer/KntDrawer.vue';
 
+import CalendarService from '@/api-client/services/CalendarService';
+
 const { t } = useI18n();
+const calendarService = new CalendarService();
 
-const unionCalendarOption = new SelectOption(t('application.calendars.union'), "union");
-const beraneseCalendarOption = new SelectOption(t('application.calendars.beranese'), "beranese");
-const ovikCalendarOption = new SelectOption(t('application.calendars.ovik'), "ovik");
-const methianCalendarOption = new SelectOption(t('application.calendars.methian'), "methian");
-const aslimaniCalendarOption = new SelectOption(t('application.calendars.aslimani'), "aslimani");
-const beginningCalendarOption = new SelectOption(t('application.calendars.beginning'), "beginning");
-const zigateCalendarOption = new SelectOption(t('application.calendars.zigate'), "zigate");
+const calendarOptions = ref([]);
 
-const currentCalendar = ref(unionCalendarOption);
+const currentCalendar = ref(null);
 const isDrawerOpen = ref(false);
 
 function openDrawer() {
@@ -28,6 +23,11 @@ function openDrawer() {
 function closeDrawer() {
   isDrawerOpen.value = false;
 }
+
+onBeforeMount(async () => {
+  calendarOptions.value = await calendarService.getCalendarSelectOptions();
+  currentCalendar.value = calendarOptions.value[0];
+})
 </script>
 
 <template>
@@ -35,13 +35,13 @@ function closeDrawer() {
     <div class="wrapper">
       <KntHeader
         :current-calendar="currentCalendar"
-        :calendars="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]"
+        :calendars="calendarOptions"
         @open-drawer="openDrawer()"
       />
     </div>
   </header>
 
-  <KntDrawer v-model="isDrawerOpen" :current-calendar="currentCalendar" :calendars="[unionCalendarOption, beraneseCalendarOption, ovikCalendarOption, methianCalendarOption, aslimaniCalendarOption, beginningCalendarOption, zigateCalendarOption]" />
+  <KntDrawer v-model="isDrawerOpen" :current-calendar="currentCalendar" :calendars="calendarOptions" />
   <RouterView class="pt-20 lg:pt-28" @open-drawer="openDrawer()"/>
   <div v-if="isDrawerOpen" @click="closeDrawer()" class="bg-gray-900/50 dark:bg-gray-900/80 backdrop-blur-sm transition-all duration-300 fixed inset-0 z-30"></div>
 </template>

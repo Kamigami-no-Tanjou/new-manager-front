@@ -28,8 +28,11 @@ export const en = {
       },
       centimetres: {
         full: 'centimetres',
-        short: 'cm'
-      }
+        short: 'cm',
+      },
+    },
+    skeletons: {
+      dataLoading: 'Loading data...',
     },
   },
   navigation: {
