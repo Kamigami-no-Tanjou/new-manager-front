@@ -24,7 +24,7 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
 
 <template>
   <div class="w-full">
-    <div class="mb-4 mx-1.5 border-b border-gray-200 dark:border-gray-700">
+    <div class="hidden lg:block mb-4 mx-1.5 border-b border-gray-200 dark:border-gray-700">
       <ul role="tablist" class="flex flex-wrap -mb-px text-sm font-medium text-center">
         <li v-for="tab in tabs" :key="tab.tabId" class="mr-2">
           <button
@@ -37,8 +37,12 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
       </ul>
     </div>
 
-    <div class="p-4 rounded-lg bg-gray-100 dark:bg-gray-800" role="tabpanel">
-      <slot></slot>
+    <div class="block lg:hidden -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
+      <slot name="mobile"></slot>
+    </div>
+
+    <div class="hidden lg:block p-4 rounded-lg bg-gray-100 dark:bg-gray-800" role="tabpanel">
+      <slot name="desktop"></slot>
     </div>
   </div>
 </template>

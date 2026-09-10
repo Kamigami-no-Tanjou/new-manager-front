@@ -1,0 +1,8 @@
+:root {
+    --swiper-pagination-top: -8px;
+    --swiper-pagination-bottom: auto;
+}
+
+.swiper-wrapper {
+    margin-top: 1.25rem;
+}

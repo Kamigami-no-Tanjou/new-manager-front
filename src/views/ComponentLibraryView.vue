@@ -1,5 +1,6 @@
 <script setup>
 import { ArrowRightIcon, MagnifyingGlassIcon, CalendarIcon, PlusIcon } from '@heroicons/vue/20/solid/index.js';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 
@@ -48,6 +49,7 @@ import KntSwitch from '@/components/input/data/KntSwitch.vue';
 import KntDrawerOpenButton from '@/components/container/drawer/KntDrawerOpenButton.vue';
 import KntActionButton from '@/components/input/button/KntActionButton.vue';
 import KntActionDialog from '@/components/container/dialog/KntActionDialog.vue';
+import { Pagination } from 'swiper/modules';
 
 /***************************************************************/
 
@@ -311,104 +313,185 @@ function closeDialog() {
       </div>
     </div>
 
-    <div class="hidden lg:block mt-6 px-16 max-w-(--breakpoint-xl) mx-auto">
-      <KntH2 class="p-4" :text="t('pages.magicalClasses.title')" />
+    <div class="mt-6 lg:px-16 lg:max-w-(--breakpoint-xl) mx-auto">
+      <KntH2 class="lg:p-4" :text="t('pages.magicalClasses.title')" />
 
       <KntTabbedContainer v-model="selectedContainerTab"  @tab-switch="changed('Tabbed container')">
-        <KntTab :tab-name="containerAssassinTab.label" :tab-id="containerAssassinTab.tabId">
-          <KntParagraph class="mb-4" text="La classe de magie Assassin désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont vulnérables en combat rapproché." />
-          <KntTable>
-            <KntTableHead>
-              <KntTableHeadRow :actions="1">
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
-              </KntTableHeadRow>
-            </KntTableHead>
+        <template #desktop>
+          <KntTab :tab-name="containerAssassinTab.label" :tab-id="containerAssassinTab.tabId">
+            <KntParagraph class="mb-4" text="La classe de magie Assassin désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont vulnérables en combat rapproché." />
+            <KntTable>
+              <KntTableHead>
+                <KntTableHeadRow :actions="1">
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
+                </KntTableHeadRow>
+              </KntTableHead>
 
-            <KntTableBody>
-              <KntTableBodyRow>
-                <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Mi Vulca</KntTableBodyCell>
-                <KntTableBodyCell>Magie des explosions</KntTableBodyCell>
-                <KntTableBodyCell>Magie de lévitation</KntTableBodyCell>
-                <KntTableBodyCell>Vulcain</KntTableBodyCell>
-                <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
-              </KntTableBodyRow>
-              <KntTableBodyRow>
-                <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Pristi Pristine Vulca Mary</KntTableBodyCell>
-                <KntTableBodyCell>Magie de rigidification de l'air</KntTableBodyCell>
-                <KntTableBodyCell>Magie de congélation</KntTableBodyCell>
-                <KntTableBodyCell>Vulcain</KntTableBodyCell>
-                <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
-              </KntTableBodyRow>
-            </KntTableBody>
-          </KntTable>
-        </KntTab>
+              <KntTableBody>
+                <KntTableBodyRow>
+                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Mi Vulca</KntTableBodyCell>
+                  <KntTableBodyCell>Magie des explosions</KntTableBodyCell>
+                  <KntTableBodyCell>Magie de lévitation</KntTableBodyCell>
+                  <KntTableBodyCell>Vulcain</KntTableBodyCell>
+                  <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+                </KntTableBodyRow>
+                <KntTableBodyRow>
+                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Pristi Pristine Vulca Mary</KntTableBodyCell>
+                  <KntTableBodyCell>Magie de rigidification de l'air</KntTableBodyCell>
+                  <KntTableBodyCell>Magie de congélation</KntTableBodyCell>
+                  <KntTableBodyCell>Vulcain</KntTableBodyCell>
+                  <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+                </KntTableBodyRow>
+              </KntTableBody>
+            </KntTable>
+          </KntTab>
 
-        <KntTab :tab-name="containerWarriorTab.label" :tab-id="containerWarriorTab.tabId">
-          <KntParagraph class="mb-4" text="La classe de magie Guerrier désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont avantagés en combat rapproché." />
-          <KntTable>
-            <KntTableHead>
-              <KntTableHeadRow :actions="1">
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
-              </KntTableHeadRow>
-            </KntTableHead>
+          <KntTab :tab-name="containerWarriorTab.label" :tab-id="containerWarriorTab.tabId">
+            <KntParagraph class="mb-4" text="La classe de magie Guerrier désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont avantagés en combat rapproché." />
+            <KntTable>
+              <KntTableHead>
+                <KntTableHeadRow :actions="1">
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
+                </KntTableHeadRow>
+              </KntTableHead>
 
-            <KntTableBody>
-              <KntTableBodyRow>
-                <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Friedrich Vulca</KntTableBodyCell>
-                <KntTableBodyCell>Magie d'enchantement</KntTableBodyCell>
-                <KntTableBodyCell>Magie de vitesse</KntTableBodyCell>
-                <KntTableBodyCell>Vulcain</KntTableBodyCell>
-                <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
-              </KntTableBodyRow>
-            </KntTableBody>
-          </KntTable>
-        </KntTab>
+              <KntTableBody>
+                <KntTableBodyRow>
+                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">Friedrich Vulca</KntTableBodyCell>
+                  <KntTableBodyCell>Magie d'enchantement</KntTableBodyCell>
+                  <KntTableBodyCell>Magie de vitesse</KntTableBodyCell>
+                  <KntTableBodyCell>Vulcain</KntTableBodyCell>
+                  <KntTableBodyCell :extra-classes="actionClasses">{{ t(Action.Consult) }}</KntTableBodyCell>
+                </KntTableBodyRow>
+              </KntTableBody>
+            </KntTable>
+          </KntTab>
 
-        <KntTab :tab-name="containerSupportTab.label" :tab-id="containerSupportTab.tabId">
-          <KntParagraph class="mb-4" text="La classe de magie Support désigne les mages qui, au combat, utilisent leur magie de manière à assister un ou plusieurs autres mages." />
-          <KntTable>
-            <KntTableHead>
-              <KntTableHeadRow :actions="1">
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
-              </KntTableHeadRow>
-            </KntTableHead>
+          <KntTab :tab-name="containerSupportTab.label" :tab-id="containerSupportTab.tabId">
+            <KntParagraph class="mb-4" text="La classe de magie Support désigne les mages qui, au combat, utilisent leur magie de manière à assister un ou plusieurs autres mages." />
+            <KntTable>
+              <KntTableHead>
+                <KntTableHeadRow :actions="1">
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
+                </KntTableHeadRow>
+              </KntTableHead>
 
-            <KntTableBody>
-              <KntTableBodyRow>
-                <KntTableBodyCell :colspan="5" extra-classes="text-center">{{ t('pages.magicalClasses.charactersTable.empty') }}</KntTableBodyCell>
-              </KntTableBodyRow>
-            </KntTableBody>
-          </KntTable>
-        </KntTab>
+              <KntTableBody>
+                <KntTableBodyRow>
+                  <KntTableBodyCell :colspan="5" extra-classes="text-center">{{ t('pages.magicalClasses.charactersTable.empty') }}</KntTableBodyCell>
+                </KntTableBodyRow>
+              </KntTableBody>
+            </KntTable>
+          </KntTab>
 
-        <KntTab :tab-name="containerFortressTab.label" :tab-id="containerFortressTab.tabId">
-          <KntParagraph class="mb-4" text="La classe de magie Forteresse désigne les mages qui, au combat, utilisent leur magie de manière défensive et sont capables d'encaisser les attaques adverses. Les mages de cette classe sont les plus rares, et sont bien évidemment extrêmement recherchés dans toutes les forces armées." />
-          <KntTable>
-            <KntTableHead>
-              <KntTableHeadRow :actions="1">
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
-                <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
-              </KntTableHeadRow>
-            </KntTableHead>
+          <KntTab :tab-name="containerFortressTab.label" :tab-id="containerFortressTab.tabId">
+            <KntParagraph class="mb-4" text="La classe de magie Forteresse désigne les mages qui, au combat, utilisent leur magie de manière défensive et sont capables d'encaisser les attaques adverses. Les mages de cette classe sont les plus rares, et sont bien évidemment extrêmement recherchés dans toutes les forces armées." />
+            <KntTable>
+              <KntTableHead>
+                <KntTableHeadRow :actions="1">
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.name') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.firstMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.secondMagic') }}</KntTableHeadCell>
+                  <KntTableHeadCell>{{ t('pages.magicalClasses.charactersTable.origin') }}</KntTableHeadCell>
+                </KntTableHeadRow>
+              </KntTableHead>
 
-            <KntTableBody>
-              <KntTableBodyRow>
-                <KntTableBodyCell :colspan="5" extra-classes="text-center">{{ t('pages.magicalClasses.charactersTable.empty') }}</KntTableBodyCell>
-              </KntTableBodyRow>
-            </KntTableBody>
-          </KntTable>
-        </KntTab>
+              <KntTableBody>
+                <KntTableBodyRow>
+                  <KntTableBodyCell :colspan="5" extra-classes="text-center">{{ t('pages.magicalClasses.charactersTable.empty') }}</KntTableBodyCell>
+                </KntTableBodyRow>
+              </KntTableBody>
+            </KntTable>
+          </KntTab>
+        </template>
+        <template #mobile>
+          <Swiper :space-between="20" auto-height pagination>
+            <SwiperSlide>
+              <KntH4 class="mb-4" :text="t(containerAssassinTab.label)" />
+              <KntParagraph class="mb-4" text="La classe de magie Assassin désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont vulnérables en combat rapproché." />
+              <div class="grid grid-cols-1 gap-4">
+                <KntCard
+                  class="lg:mt-1.5"
+                >
+                  <template v-slot:title>
+                    <div class="flex justify-between items-center">
+                      <RouterLink to="#"><KntH4 text="Mi Vulca" /></RouterLink>
+                      <RouterLink to="#"><KntH6 text="Vulcain" /></RouterLink>
+                    </div>
+                  </template>
+
+                  <KntH6 :text="t('pages.charactersList.magics')" />
+                  <RouterLink to="#" class="ml-2 mb-2"><KntSmallText text="Magie des explosions" /></RouterLink>
+                  <br/>
+                  <RouterLink to="#" class="ml-2"><KntSmallText text="Magie de lévitation" /></RouterLink>
+
+                  <KntLinkButton to="#">{{ t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+                </KntCard>
+                <KntCard
+                  class="lg:mt-1.5"
+                >
+                  <template v-slot:title>
+                    <div class="flex justify-between items-center">
+                      <RouterLink to="#"><KntH4 text="Pristi Pristine Vulca Mary" /></RouterLink>
+                      <RouterLink to="#"><KntH6 text="Vulcain" /></RouterLink>
+                    </div>
+                  </template>
+
+                  <KntH6 :text="t('pages.charactersList.magics')" />
+                  <RouterLink to="#" class="ml-2 mb-2"><KntSmallText text="Magie de rigidification de l'air" /></RouterLink>
+                  <br/>
+                  <RouterLink to="#" class="ml-2"><KntSmallText text="Magie de congélation" /></RouterLink>
+
+                  <KntLinkButton to="#">{{ t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+                </KntCard>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <KntH4 class="mb-4" :text="t(containerWarriorTab.label)" />
+              <KntParagraph class="mb-4" text="La classe de magie Guerrier désigne les mages qui, au combat, utilisent leur magie de manière offensive et sont avantagés en combat rapproché." />
+
+              <div class="grid grid-cols-1 gap-4">
+                <KntCard
+                  class="lg:mt-1.5"
+                >
+                  <template v-slot:title>
+                    <div class="flex justify-between items-center">
+                      <RouterLink to="#"><KntH4 text="Friedrich Vulca" /></RouterLink>
+                      <RouterLink to="#"><KntH6 text="Vulcain" /></RouterLink>
+                    </div>
+                  </template>
+
+                  <KntH6 :text="t('pages.charactersList.magics')" />
+                  <RouterLink to="#" class="ml-2 mb-2"><KntSmallText text="Magie d'enchantement" /></RouterLink>
+                  <br/>
+                  <RouterLink to="#" class="ml-2"><KntSmallText text="Magie de vitesse" /></RouterLink>
+
+                  <KntLinkButton to="#">{{ t('application.actions.consult') }} <ArrowRightIcon class="ml-1 mt-0.5 size-4" /></KntLinkButton>
+                </KntCard>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <KntH4 class="mb-4" :text="t(containerSupportTab.label)" />
+              <KntParagraph class="mb-4" text="La classe de magie Support désigne les mages qui, au combat, utilisent leur magie de manière à assister un ou plusieurs autres mages." />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <KntH4 class="mb-4" :text="t(containerFortressTab.label)" />
+              <KntParagraph class="mb-4" text="La classe de magie Forteresse désigne les mages qui, au combat, utilisent leur magie de manière défensive et sont capables d'encaisser les attaques adverses. Les mages de cette classe sont les plus rares, et sont bien évidemment extrêmement recherchés dans toutes les forces armées." />
+            </SwiperSlide>
+          </Swiper>
+        </template>
       </KntTabbedContainer>
     </div>
   </main>

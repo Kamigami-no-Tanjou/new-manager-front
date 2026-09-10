@@ -2,6 +2,7 @@
 import { ref, onBeforeMount } from 'vue';
 import { RouterView } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { Pagination } from 'swiper/modules';
 
 import KntHeader from '@/components/header/KntHeader.vue';
 import KntDrawer from '@/components/container/drawer/KntDrawer.vue';
@@ -9,6 +10,7 @@ import KntDrawer from '@/components/container/drawer/KntDrawer.vue';
 import CalendarService from '@/api-client/services/CalendarService';
 
 const { t } = useI18n();
+const modules = [Pagination];
 const calendarService = new CalendarService();
 
 const calendarOptions = ref([]);
