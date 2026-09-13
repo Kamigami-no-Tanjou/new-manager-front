@@ -23,7 +23,7 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
 </script>
 
 <template>
-  <div class="h-full lg:h-fit w-full">
+  <div class="flex flex-col flex-1 lg:block lg:h-fit w-full">
     <div class="hidden lg:block mb-4 mx-1.5 border-b border-gray-200 dark:border-gray-700">
       <ul role="tablist" class="flex flex-wrap -mb-px text-sm font-medium text-center">
         <li v-for="tab in tabs" :key="tab.tabId" class="mr-2">
@@ -37,7 +37,7 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
       </ul>
     </div>
 
-    <div class="block lg:hidden h-full overflow-scroll -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
+    <div class="block flex-1 lg:hidden -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
       <slot name="mobile"></slot>
     </div>
 
