@@ -50,7 +50,7 @@ onBeforeMount(async () => {
 
 <template>
   <main class="home min-h-screen flex flex-col lg:block bg-white p-2 lg:p-7 dark:bg-gray-900">
-    <div class="flex flex-col fl  ex-1 lg:block lg:h-fit w-full max-w-(--breakpoint-xl) mx-auto lg:px-12">
+    <div class="flex flex-col flex-1 lg:block lg:h-fit w-full max-w-(--breakpoint-xl) mx-auto lg:px-12">
       <KntBreadcrumb :breadcrumbs="[new Breadcrumb(t('navigation.dashboard'), '/'), new Breadcrumb(t('navigation.magicalClasses'))]" />
 
       <KntH2 class="lg:p-4" :text="t('pages.magicalClasses.title')" />
