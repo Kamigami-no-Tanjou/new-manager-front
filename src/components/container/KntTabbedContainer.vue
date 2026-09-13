@@ -31,6 +31,7 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
             @click="switchTab(tab)"
             :class="tabButtonStyle + ((selectedTab === tab.tabId)? selectedTabButtonStyle: unselectedTabButtonStyle)"
           >
+            <img v-if="tab.iconUri" :src="tab.iconUri" class="inline-block size-6 mr-2" />
             {{ tab.label }}
           </button>
         </li>

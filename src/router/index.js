@@ -50,7 +50,7 @@ const router = createRouter({
     {
       path: '/elems',
       name: 'elements',
-      component: () => import('../views/ComponentLibraryView.vue')
+      component: () => import('../views/MagicsPerElementView.vue')
     },
     {
       path: '/leaders',

@@ -10,12 +10,16 @@ const props = defineProps({
   tabName: {
     type: String,
     required: true,
-  }
+  },
+  tabIconUri: {
+    type: String,
+    required: false,
+  },
 });
 const selectedTabId = inject('selectedTab');
 
 onMounted(() => {
-  inject('registerTab')(new Tab(props.tabName, props.tabId));
+  inject('registerTab')(new Tab(props.tabName, props.tabId, props.tabIconUri));
 });
 </script>
 

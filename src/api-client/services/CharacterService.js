@@ -27,7 +27,7 @@ export default class CharacterService extends ApiClientService {
 
     // @todo Cache data within the client stores, or at least in the memory of the current view,
     // so that it isn't loaded from the server everytime.
-    // return await axios.get("/api/calendars", this.axiosConfig);
+    // return await axios.get("/api/characters", this.axiosConfig);
   }
 
   /**
