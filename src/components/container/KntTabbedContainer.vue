@@ -17,13 +17,13 @@ function switchTab(tab) {
   emit('tab-switch', tab);
 }
 
-const tabButtonStyle = "flex inline-block p-4 leading-8 rounded-t-lg";
+const tabButtonStyle = "flex inline-block p-4 leading-8 rounded-t-lg cursor-pointer";
 const unselectedTabButtonStyle = " hover:border-b-2 hover:border-gray-300 text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:border-gray-400 dark:hover:text-gray-300";
 const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:border-blue-500 dark:text-blue-500";
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="h-full lg:h-fit w-full">
     <div class="hidden lg:block mb-4 mx-1.5 border-b border-gray-200 dark:border-gray-700">
       <ul role="tablist" class="flex flex-wrap -mb-px text-sm font-medium text-center">
         <li v-for="tab in tabs" :key="tab.tabId" class="mr-2">
@@ -37,7 +37,7 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
       </ul>
     </div>
 
-    <div class="block lg:hidden -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
+    <div class="block lg:hidden h-full overflow-scroll -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
       <slot name="mobile"></slot>
     </div>
 

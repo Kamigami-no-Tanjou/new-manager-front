@@ -49,7 +49,6 @@ import KntSwitch from '@/components/input/data/KntSwitch.vue';
 import KntDrawerOpenButton from '@/components/container/drawer/KntDrawerOpenButton.vue';
 import KntActionButton from '@/components/input/button/KntActionButton.vue';
 import KntActionDialog from '@/components/container/dialog/KntActionDialog.vue';
-import { Pagination } from 'swiper/modules';
 
 /***************************************************************/
 

@@ -3,7 +3,7 @@ import ApiClientService from './ApiClientService';
 import CalendarDto from '../dtos/CalendarDto';
 import CalendarSelectOption from '@/classes/model/CalendarSelectOption';
 
-export default class SampleService extends ApiClientService {
+export default class CalendarService extends ApiClientService {
   formatData(dataEntry) {
     return new CalendarDto(dataEntry);
   }

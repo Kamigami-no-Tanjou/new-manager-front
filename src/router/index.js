@@ -40,7 +40,7 @@ const router = createRouter({
     {
       path: '/classes',
       name: 'magicalClasses',
-      component: () => import('../views/ComponentLibraryView.vue')
+      component: () => import('../views/CharactersPerClassView.vue')
     },
     {
       path: '/mpc',
