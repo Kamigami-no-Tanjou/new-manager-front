@@ -30,7 +30,7 @@ const router = createRouter({
     {
       path: '/magics',
       name: 'magics',
-      component: () => import('../views/ComponentLibraryView.vue')
+      component: () => import('../views/MagicsListView.vue')
     },
     {
       path: '/nations',
