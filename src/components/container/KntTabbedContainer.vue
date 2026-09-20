@@ -1,6 +1,8 @@
 <script setup>
 import { ref, provide } from 'vue';
 
+import KntContainer from '@/components/container/KntContainer.vue';
+
 const selectedTab = defineModel();
 const emit = defineEmits(['tab-switch']);
 const tabs = ref ([]);
@@ -38,12 +40,9 @@ const selectedTabButtonStyle = " border-b-2 border-blue-600 text-blue-600 dark:b
       </ul>
     </div>
 
-    <div class="block flex-1 lg:hidden -m-2 p-4 rounded-t-4xl bg-gray-100 dark:bg-gray-800">
-      <slot name="mobile"></slot>
-    </div>
-
-    <div class="hidden lg:block p-4 rounded-lg bg-gray-100 dark:bg-gray-800" role="tabpanel">
-      <slot name="desktop"></slot>
-    </div>
+    <KntContainer>
+      <template #mobile><slot name="mobile"></slot></template>
+      <template #desktop><slot name="desktop"></slot></template>
+    </KntContainer>
   </div>
 </template>

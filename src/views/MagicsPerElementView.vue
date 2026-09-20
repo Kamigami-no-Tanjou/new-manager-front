@@ -74,7 +74,7 @@ onBeforeMount(async () => {
 
               <KntTableBody>
                 <KntTableBodyRow v-for="magic in magicsPerElement[elements.find(e => e.id === Number(elementTab.tabId)).name]" :key="'desktop-' + magic.id">
-                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">{{ magic.name }}</KntTableBodyCell>
+                  <KntTableBodyCell extra-classes="font-semibold text-gray-900 whitespace-nowrap dark:text-white">{{ magic.name }}</KntTableBodyCell>
                   <KntTableBodyCell><img v-for="element in magic.elements" :key="'el-' + element + '-' + magic.id" :src="elements.find(e => e.id === element)?.icon" :alt="element" class="inline-block size-6" /></KntTableBodyCell>
                   <KntTableBodyCell extra-classes="text-center">{{ magic.charactersCount }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ magic.description }}</KntTableBodyCell>

@@ -71,7 +71,7 @@ onBeforeMount(async () => {
 
               <KntTableBody>
                 <KntTableBodyRow v-for="character in charactersPerClass.assassin" :key="'desktop-' + character.id">
-                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
+                  <KntTableBodyCell extra-classes="font-semibold text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[0]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[1]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.origin.name }}</KntTableBodyCell>
@@ -98,7 +98,7 @@ onBeforeMount(async () => {
 
               <KntTableBody>
                 <KntTableBodyRow v-for="character in charactersPerClass.warrior" :key="'desktop-' + character.id">
-                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
+                  <KntTableBodyCell extra-classes="font-semibold text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[0]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[1]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.origin.name }}</KntTableBodyCell>
@@ -125,7 +125,7 @@ onBeforeMount(async () => {
 
               <KntTableBody>
                 <KntTableBodyRow v-for="character in charactersPerClass.support" :key="'desktop-' + character.id">
-                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
+                  <KntTableBodyCell extra-classes="font-semibold text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[0]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[1]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.origin.name }}</KntTableBodyCell>
@@ -152,7 +152,7 @@ onBeforeMount(async () => {
 
               <KntTableBody>
                 <KntTableBodyRow v-for="character in charactersPerClass.fortress" :key="'desktop-' + character.id">
-                  <KntTableBodyCell extra-classes="text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
+                  <KntTableBodyCell extra-classes="font-semibold text-gray-900 whitespace-nowrap dark:text-white">{{ character.firstName }} {{ character.lastName }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[0]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.magics[1]?.name }}</KntTableBodyCell>
                   <KntTableBodyCell>{{ character.origin.name }}</KntTableBodyCell>

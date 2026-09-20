@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/characs',
       name: 'characters',
-      component: () => import('../views/ComponentLibraryView.vue')
+      component: () => import('../views/CharactersListView.vue')
     },
     {
       path: '/events',

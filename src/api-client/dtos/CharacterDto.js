@@ -2,6 +2,7 @@ export default class CharacterDto {
   /**
    * @param {{
    *  id: number,
+   *  potential: ?number,
    *  firstName: string,
    *  lastName: string,
    *  magicalClass: ?string,
@@ -17,6 +18,7 @@ export default class CharacterDto {
    */
   constructor(data) {
     this.id = data.id;
+    this.potential = data.potential;
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.magicalClass = data.magicalClass;
